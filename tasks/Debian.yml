@@ -15,3 +15,11 @@
     - restart webserver
     - restart php-fpm
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version == '14'
+
+- name: Install Apache2 PHP Mod (Debian 9).
+  apt:
+    name: 'libapache2-mod-php7.0'
+    state: present
+  notify:
+    - restart webserver
+  when: ansible_os_family == 'Debian' and ansible_distribution_major_version == '9'
